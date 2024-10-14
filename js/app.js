@@ -33,8 +33,15 @@ function contarVocales(cadena) {
   
 // Convierte una temperatura de grados Celsius a Fahrenheit
 celsiusAFahrenheit = (celsius) => {
+    let resultado;
+    if (typeof celsius !== 'number' || isNaN(celsius)) {
+        resultado = null;
+    } else {
+        resultado = parseFloat((celsius * (9 / 5) + 32).toFixed(2));
+    }
 
-}
+    return resultado;
+    }
 
 // Crea una función que formatee un número agregando comas como separadores de miles.
 function formatearNumero(numero) {
