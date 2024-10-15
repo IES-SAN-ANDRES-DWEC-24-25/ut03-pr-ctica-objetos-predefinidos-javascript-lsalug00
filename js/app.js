@@ -95,7 +95,21 @@ function diasParaNavidad(){
 
 // Función que genera un número aleatorio entre comienzo y fin
 function calcularAleatorio(comienzo, fin){
+    let resultado = null;
 
+    if (typeof comienzo === 'number' && typeof fin === 'number' &&
+        isFinite(comienzo) && isFinite(fin) &&
+        Number.isInteger(comienzo) && Number.isInteger(fin) &&
+        comienzo >= 0 && fin >= 0 && comienzo <= fin) {
+        
+        if (comienzo === fin) {
+            resultado = comienzo;
+        } else {
+            resultado = Math.floor(Math.random() * (fin - comienzo + 1)) + comienzo;
+        }
+    }
+
+    return resultado;
 }
 
 
