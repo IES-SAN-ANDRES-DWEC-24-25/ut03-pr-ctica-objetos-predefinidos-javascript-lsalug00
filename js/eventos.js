@@ -96,8 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 9
     document.getElementById('btnVerificarPalindromo').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaPalindromo').value;
-        const esPal = esPalindromo(cadena);
-        const mensaje = esPal ? 'Es un palíndromo.' : 'No es un palíndromo.';
+        const mensaje = "Introduce un texto en el campo"
+        if (cadena!==""){
+            const esPal = esPalindromo(cadena);
+            mensaje = esPal ? 'Es un palíndromo.' : 'No es un palíndromo.';
+        }
         document.getElementById('resultadoPalindromo').innerText = mensaje;
     });
 

@@ -116,7 +116,17 @@ function calcularAleatorio(comienzo, fin){
 
 //   función para verificar si una cadena es un palíndromo sin utilizar expresiones regulares ni programación funcional
 function esPalindromo(cadena){
+    let resultado = false;
 
+    if (typeof cadena === 'string') {
+        const cadenaLimpia = cadena.toLowerCase().replace(/[^a-z]/g, '');
+        if (cadenaLimpia.length > 0) {
+            const cadenaReversa = cadenaLimpia.split('').reverse().join('');
+            resultado = cadenaLimpia === cadenaReversa;
+        }
+    }
+
+    return resultado;
 }
 
 // Función que recibe un número y devuelve un string con el número escrito en palabras
