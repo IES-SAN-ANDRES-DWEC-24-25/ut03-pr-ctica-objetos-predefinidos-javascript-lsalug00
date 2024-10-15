@@ -83,7 +83,39 @@ function reyesMagos(fecha) {
 
 // Ejercicio 10: Convertir a lowerCamelCase
 function camelCase(cadena) {
+    let resultado = null;
 
+    if (typeof cadena === 'string') {
+        let textoSinAcentos = '';
+
+        for (let i = 0; i < cadena.length; i++) {
+            const caracter = cadena[i];
+            switch (caracter) {
+                case 'á': textoSinAcentos += 'a'; break;
+                case 'é': textoSinAcentos += 'e'; break;
+                case 'í': textoSinAcentos += 'i'; break;
+                case 'ó': textoSinAcentos += 'o'; break;
+                case 'ú': textoSinAcentos += 'u'; break;
+                case 'ñ': textoSinAcentos += 'n'; break;
+                case 'Á': textoSinAcentos += 'A'; break;
+                case 'É': textoSinAcentos += 'E'; break;
+                case 'Í': textoSinAcentos += 'I'; break;
+                case 'Ó': textoSinAcentos += 'O'; break;
+                case 'Ú': textoSinAcentos += 'U'; break;
+                case 'Ñ': textoSinAcentos += 'N'; break;
+                default: textoSinAcentos += caracter;
+            }
+        }
+
+        const palabras = textoSinAcentos.toLowerCase().trim().split(/\s+/);
+        resultado = palabras[0]; 
+
+        for (let i = 1; i < palabras.length; i++) {
+            resultado += palabras[i].charAt(0).toUpperCase() + palabras[i].slice(1);
+        }
+    }
+
+    return resultado;
 }
 
 

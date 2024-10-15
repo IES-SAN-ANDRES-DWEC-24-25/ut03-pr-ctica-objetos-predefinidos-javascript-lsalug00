@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 9
     document.getElementById('btnVerificarPalindromo').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaPalindromo').value;
-        const mensaje = "Introduce un texto en el campo"
+        let mensaje = "Introduce un texto en el campo"
         if (cadena!==""){
             const esPal = esPalindromo(cadena);
             mensaje = esPal ? 'Es un palíndromo.' : 'No es un palíndromo.';
@@ -111,7 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 10
     document.getElementById('btnCamelCase').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaCamelCase').value;
-        const camel = camelCase(cadena);
-        document.getElementById('resultadoCamelCase').innerText = `lowerCamelCase: ${camel}`;
+        if (cadena!=="") {
+            const camel = camelCase(cadena);
+            document.getElementById('resultadoCamelCase').innerText = `lowerCamelCase: ${camel}`;
+        }else {
+            document.getElementById('resultadoCamelCase').innerText = "Introduce un texto en el campo";
+        }
     });
 });
