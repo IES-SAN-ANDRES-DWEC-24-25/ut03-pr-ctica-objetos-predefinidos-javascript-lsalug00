@@ -45,7 +45,13 @@ celsiusAFahrenheit = (celsius) => {
 
 // Crea una función que formatee un número agregando comas como separadores de miles.
 function formatearNumero(numero) {
+    let resultado = null;
 
+    if (typeof numero === 'number' && !isNaN(numero) && isFinite(numero)) {
+        resultado = numero.toLocaleString('es-ES');
+    }
+
+    return resultado;
 }
 
 
