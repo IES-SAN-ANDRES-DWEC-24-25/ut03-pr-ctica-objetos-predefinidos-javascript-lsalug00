@@ -19,8 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 3
     document.getElementById('btnContarVocales').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaVocales').value;
-        const total = contarVocales(cadena);
-        document.getElementById('resultadoVocales').innerText = `Número de Vocales: ${total}`;
+        if (cadena!==""){
+            const total = contarVocales(cadena);
+            document.getElementById('resultadoVocales').innerText = `Número de Vocales: ${total}`;
+        }else{
+            document.getElementById('resultadoVocales').innerText = "Introcuce un texto";
+        }
     });
 
     // Ejercicio 4
