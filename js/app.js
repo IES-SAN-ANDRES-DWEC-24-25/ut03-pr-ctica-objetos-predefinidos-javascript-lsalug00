@@ -121,5 +121,121 @@ function esPalindromo(cadena){
 
 // Función que recibe un número y devuelve un string con el número escrito en palabras
 function numberToWords(num) {
+    let resultado = '';
 
+    if (typeof num !== 'number' || !Number.isInteger(num) || num < 0 || num > 999999) {
+        resultado = '';
+    }else{
+        const unidades = ['cero', 'un', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'];
+        const decenasEspeciales = ['diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve'];
+        const decenas = ['', '', 'veinti', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
+        const centenas = ['', 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
+
+        if (num === 0) {
+            resultado = 'cero';
+        }
+
+        const miles = Math.floor(num / 1000);
+        const resto = num % 1000;
+
+        if (miles > 0) {
+            if (miles === 1) {
+                resultado += 'mil';
+            } else {
+                const cientosDeMiles = Math.floor(miles / 100);
+                const decenasDeMiles = miles % 100;
+
+                if (cientosDeMiles === 1) {
+                    if (decenasDeMiles === 0){
+                        resultado += "cien" + ' ';
+                    }else{
+                        resultado += "ciento" + ' ';
+                    }
+                }else if (cientosDeMiles > 0) {
+                    resultado += centenas[cientosDeMiles] + ' ';
+                }
+
+                if (decenasDeMiles > 0) {
+                    if (decenasDeMiles < 10) {
+                        resultado += unidades[decenasDeMiles];
+                    } else if (decenasDeMiles === 20){
+                        resultado += "veinte";
+                    } else if (decenasDeMiles === 21){
+                        resultado += "veintiun";
+                    } else if (decenasDeMiles < 21) {
+                        resultado += decenasEspeciales[decenasDeMiles - 10];
+                    } else if (decenasDeMiles < 30) {
+                        const decena = Math.floor(decenasDeMiles / 10);
+                        const unidad = decenasDeMiles % 10;
+        
+                        resultado += decenas[decena];
+                        if (unidad > 0) {
+                            resultado += unidades[unidad];
+                        }
+                    } else {
+                        const decena = Math.floor(decenasDeMiles / 10);
+                        const unidad = decenasDeMiles % 10;
+
+                        resultado += decenas[decena];
+                        if (unidad > 0) {
+                            resultado += ' y ' + unidades[unidad];
+                        }
+                    }
+                }
+                resultado += ' mil';
+            }
+        }
+
+        if (resto > 0) {
+            if (resultado !== '') {
+                resultado += ' ';
+            }
+
+            const cientos = Math.floor(resto / 100);
+            const dec = resto % 100;
+
+            if (cientos > 0) {
+                if (cientos === 1 && dec === 0) {
+                    resultado += 'cien';
+                } else {
+                    resultado += centenas[cientos];
+                }
+            }
+
+            if (dec > 0) {
+                resultado += (cientos > 0 ? ' ' : '');
+                if (dec == 1){
+                    resultado += "uno";
+                }else if (dec < 10) {
+                    resultado += unidades[dec];
+                } else if (dec < 20) {
+                    resultado += decenasEspeciales[dec - 10];
+                } else if (dec === 20){
+                    resultado += "veinte";
+                }  else if (dec === 21){
+                    resultado += "veintiuno";
+                } else if (dec < 30) {
+                    const decena = Math.floor(dec / 10);
+                    const unidad = dec % 10;
+
+                    resultado += decenas[decena];
+                    if (unidad > 0) {
+                        resultado += unidades[unidad];
+                    }
+                } else {
+                    const decena = Math.floor(dec / 10);
+                    const unidad = dec % 10;
+
+                    resultado += decenas[decena];
+                    if (unidad == 1) {
+                        resultado += ' y ' + "uno";
+                    }else if (unidad > 0) {
+                        resultado += ' y ' + unidades[unidad];
+                    }
+                }
+            }
+        }
+    }
+
+    return resultado.trim();
 }

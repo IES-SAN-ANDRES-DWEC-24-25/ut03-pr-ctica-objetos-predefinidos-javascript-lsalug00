@@ -80,9 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 8
     document.getElementById('btnNumberToWords').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaNumberToWords').value;
-        const numero = numberToWords(+cadena);
+        let numero = "";
+        if (cadena !== ""){
+            numero = numberToWords(+cadena);
+            
+        }
         console.log(numero);
-        document.getElementById('resultadoNumberToWords').innerText = `${numero}`;
+        if (numero !== ""){
+            document.getElementById('resultadoNumberToWords').innerText = `${numero}`;
+        } else{
+            document.getElementById('resultadoNumberToWords').innerText = "Introduce un numero entre 0 y 999999";
+        }
     });
 
     // Ejercicio 9
