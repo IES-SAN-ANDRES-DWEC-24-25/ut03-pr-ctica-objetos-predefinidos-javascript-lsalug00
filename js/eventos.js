@@ -19,8 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 3
     document.getElementById('btnContarVocales').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaVocales').value;
-        const total = contarVocales(cadena);
-        document.getElementById('resultadoVocales').innerText = `Número de Vocales: ${total}`;
+        if (cadena!==""){
+            const total = contarVocales(cadena);
+            document.getElementById('resultadoVocales').innerText = `Número de Vocales: ${total}`;
+        }else{
+            document.getElementById('resultadoVocales').innerText = "Introcuce un texto";
+        }
     });
 
     // Ejercicio 4
@@ -80,23 +84,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ejercicio 8
     document.getElementById('btnNumberToWords').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaNumberToWords').value;
-        const numero = numberToWords(+cadena);
+        let numero = "";
+        if (cadena !== ""){
+            numero = numberToWords(+cadena);
+            
+        }
         console.log(numero);
-        document.getElementById('resultadoNumberToWords').innerText = `${numero}`;
+        if (numero !== ""){
+            document.getElementById('resultadoNumberToWords').innerText = `${numero}`;
+        } else{
+            document.getElementById('resultadoNumberToWords').innerText = "Introduce un numero entre 0 y 999999";
+        }
     });
 
     // Ejercicio 9
     document.getElementById('btnVerificarPalindromo').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaPalindromo').value;
-        const esPal = esPalindromo(cadena);
-        const mensaje = esPal ? 'Es un palíndromo.' : 'No es un palíndromo.';
+        let mensaje = "Introduce un texto en el campo"
+        if (cadena!==""){
+            const esPal = esPalindromo(cadena);
+            mensaje = esPal ? 'Es un palíndromo.' : 'No es un palíndromo.';
+        }
         document.getElementById('resultadoPalindromo').innerText = mensaje;
     });
 
     // Ejercicio 10
     document.getElementById('btnCamelCase').addEventListener('click', () => {
         const cadena = document.getElementById('cadenaCamelCase').value;
-        const camel = camelCase(cadena);
-        document.getElementById('resultadoCamelCase').innerText = `lowerCamelCase: ${camel}`;
+        if (cadena!=="") {
+            const camel = camelCase(cadena);
+            document.getElementById('resultadoCamelCase').innerText = `lowerCamelCase: ${camel}`;
+        }else {
+            document.getElementById('resultadoCamelCase').innerText = "Introduce un texto en el campo";
+        }
     });
 });
