@@ -57,7 +57,27 @@ function formatearNumero(numero) {
 
 // Función que recibe un string en formato dd/mm/yyyy y devuelve el número de días que faltan para el 6 de Enero del año siguiente
 function reyesMagos(fecha) {
+    let resultado = null;
 
+    const regexFecha = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (regexFecha.test(fecha)) {
+        const [dia, mes, año] = fecha.split('/').map(Number);
+
+        const fechaProporcionada = new Date(año, mes - 1, dia);
+
+        if (fechaProporcionada.getDate() === dia && fechaProporcionada.getMonth() === mes - 1) {
+            let fechaReyes = new Date(año, 0, 6);
+
+            if (fechaProporcionada > fechaReyes) {
+                fechaReyes = new Date(año + 1, 0, 6);
+            }
+
+            const milisegundosPorDia = 1000 * 60 * 60 * 24;
+            resultado = Math.round((fechaReyes - fechaProporcionada) / milisegundosPorDia);
+        }
+    }
+
+    return resultado;
 }
 
 
